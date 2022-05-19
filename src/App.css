@@ -5,7 +5,7 @@ body {
 
 }
 
-a {
+a{
     text-decoration: none;
     color: #000;
 }
@@ -14,9 +14,9 @@ a {
     margin-top: 80px;
 }
 
-.form-control {
+/* .form-control {
     width: 400px;
-}
+} */
 
 .form-section {
     margin: 0 40px 0;
@@ -30,13 +30,9 @@ a {
 }
 
 .button-skyblue:hover {
-
     background-color: #37B8EE;
-
     color: #fff;
-
     border: 0;
-
 }
 
 .form-check-input:checked {
@@ -74,32 +70,12 @@ h3 {
     text-align: center;
 }
 
-.button-skyblue {
 
-    background-color: #3777ee;
 
-    color: #fff;
-
-    border: 0;
-    width: 80%;
-    margin-left: 10%;
-
-}
-
-.button-skyblue:hover {
-
-    background-color: #37B8EE;
-
-    color: #fff;
-
-    border: 0;
-
-}
-
-.login {
+/* .login {
     text-align: center;
 }
 
 .login a {
     text-decoration: none;
-}
+} */

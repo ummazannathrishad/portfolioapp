@@ -44,7 +44,7 @@ const signup = () => {
                                     <button type="submit" className="btn button-skyblue">Submit</button>
 
                                     <div className="login">
-                                        <p>Already Have Account? <a href="http://" target="blank"> Log In.</a></p>
+                                        <p>Already Have Account? <a href="/login" target="blank"> Log In.</a></p>
                                     </div>
                                 </form>
                             </form>
