@@ -36,7 +36,7 @@ const login = () => {
                                 Reset Password? <a href="/forgot-password">Click Here</a>
                                 </p>
                                 <p>
-                                Create a new account. <a href="">Click Here</a>
+                                Create a new account. <a href="/">Click Here</a>
                                 </p>
                               </form>
                         </div>
