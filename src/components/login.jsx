@@ -16,7 +16,7 @@ const login = () => {
                         </div>
                         <div className="col-md-6">
                             <form action="" method="" className="form-section">
-                                <h3>Sign in here</h3>
+                                <h3>Sign in</h3>
                                 <div className="mb-3">
                                   <label for="exampleInputEmail1" className="form-label">Email address</label>
                                   <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
