@@ -5,7 +5,7 @@ const signup = () => {
     return (
         <section>
             <div className="container">
-                <div className="full-part shadow-lg p-3 mb-5 bg-body rounded">
+                <div className="full-part shadow-lg rounded-4 ">
                     <div className="row">
                         <div className="col-md-6">
                             <img src={signUp_img} alt="" />
@@ -33,17 +33,23 @@ const signup = () => {
                                         <small id="emailHelp" className="form-text text-muted">We'll never share your email with
                                             anyone else.</small>
                                     </div>
+
                                     <div className="form-group">
                                         <label for="exampleInputPassword1">Password</label>
                                         <input type="password" className="form-control" id="exampleInputPassword1"
                                             placeholder="Password" />
+
+                                        <br />
+
                                         <input type="password" className="form-control" id="exampleInputPassword1"
                                             placeholder="Confirm Password" />
                                     </div>
 
+                                    <br />
+
                                     <button type="submit" className="btn button-skyblue">Submit</button>
 
-                                    <div className="login">
+                                    <div className="signup-under">
                                         <p>Already Have Account? <a href="/login" target="blank"> Log In.</a></p>
                                     </div>
                                 </form>
