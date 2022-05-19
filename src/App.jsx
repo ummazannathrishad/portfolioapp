@@ -9,8 +9,8 @@ function App() {
   return (
     <>
     {/* <Login /> */}
-
     {/* Route */}
+
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />}/>
@@ -18,6 +18,7 @@ function App() {
         <Route path="/reset-password" element={<Resetpass/>}/>
       </Routes>
     </BrowserRouter>
+    
     </>
   );
 }
