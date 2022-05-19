@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../assets/image/login pic.png';
+import loginimg from '../assets/image/login pic.png';
 
 const login = () => {
   return (
@@ -12,7 +12,7 @@ const login = () => {
                     <div className="row">
                         <div className="col-md-6">
                             <div className="img border-end">
-                                <img src={img} alt="login" className="img-fluid"/>
+                                <img src={loginimg} alt="login" className="img-fluid"/>
                             </div>
                         </div>
                         <div className="col-md-6">
@@ -32,6 +32,12 @@ const login = () => {
                                   <label className="form-check-label" for="exampleCheck1">Remember me</label>
                                 </div>
                                 <button type="submit" className="btn button-skyblue">Submit</button>
+                                <p>
+                                Reset Password? <a href="/forgot-password">Click Here</a>
+                                </p>
+                                <p>
+                                Create a new account. <a href="">Click Here</a>
+                                </p>
                               </form>
                         </div>
                     </div>

@@ -3,6 +3,11 @@ body{
     font-family: 'Poppins', sans-serif;
     
 }
+
+a{
+    text-decoration: none;
+    color: #000;
+}
 .login{
     margin-top: 80px;
 }
@@ -32,4 +37,7 @@ body{
     background-color: #37B8EE;
     border-color: #37B8EE;
   }
+
+
+
 
