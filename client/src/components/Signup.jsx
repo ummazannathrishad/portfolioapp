@@ -1,7 +1,7 @@
 import React from 'react';
 import signUp_img from '../assets/image/signup-img.png';
 
-const signup = () => {
+const Signup = () => {
     return (
         <section>
             <div className="container">
@@ -62,4 +62,4 @@ const signup = () => {
     )
 }
 
-export default signup
+export default Signup;
