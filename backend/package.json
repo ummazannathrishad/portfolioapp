@@ -4,8 +4,8 @@
   "description": "",
   "main": "login.js",
   "scripts": {
-    "start": "node login.js",
-    "dev": "nodemon login.js"
+    "start": "node forget.js",
+    "dev": "nodemon forget.js"
   },
   "keywords": [],
   "author": "",

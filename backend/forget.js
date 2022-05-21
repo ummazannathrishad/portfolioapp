@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
-const User = require('./userSchema')
+const User = require('./userInfoSchema')
 mongoose.connect("mongodb+srv://atul:h6iRSWoWXaOUTPgi@cluster0.yavrk.mongodb.net/practiceOne?retryWrites=true&w=majority", () => {
     console.log("mongodb connected");
 },
@@ -37,7 +37,7 @@ app.post('/forget-password', async (req, res, next) => {
         _id: users._id,
     }
     const token = jwt.sign(payload, secret, { expiresIn: '20m' })
-    const link = `http://localhost:8080/reset-password?_id=${users._id}&token=${token}`
+    const link = `http://localhost:3000/reset-password?_id=${users._id}&token=${token}`
     console.log(link)
     res.end('Password resest link has been send to your email')
 })

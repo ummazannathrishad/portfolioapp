@@ -1,7 +1,27 @@
-import React from 'react'
+import React, {useState} from 'react'
 import resetpassimg from '../assets/image/resetpass.png'
+import axios from 'axios';
 
-const resetpass = () => {
+const Resetpass = () => {
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const onResetPass = async (e) => {
+        e.preventDefault();
+        try{
+            const response = await axios.post('/reset-password', JSON.stringify({password, confirmPassword}),
+            {
+                headers: { 'Content-Type': 'application/json'},
+                withCredentials: true
+            }
+            );
+        }
+        catch(err){
+            console.log('Error');
+        }
+    }
+
+
   return (
     <div className="container">
         <div className="row">
@@ -14,7 +34,7 @@ const resetpass = () => {
                             </div>
                         </div>
                         <div className="col-md-6 d-flex justify-content-center align-items-center">
-                            <form action="" method="post" className="needs-validation p-4" novalidate>
+                            <form action="" method="post" className="needs-validation p-4" novalidate onSubmit={onResetPass}>
                                 <h3 className="mb-4">Reset Password</h3>
                                 <div className="row d-flex justify-content-center">
                                     <div className="col-md-12">
@@ -45,4 +65,4 @@ const resetpass = () => {
   )
 }
 
-export default resetpass
+export default Resetpass
