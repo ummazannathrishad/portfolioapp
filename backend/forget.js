@@ -57,7 +57,7 @@ app.post('/reset-password', async (req, res, next) => {
     const secret = JWT_SECRET + User.password
     try {
         const payload = jwt.verify(token, secret)
-        //Validate password and pasword2 should match
+        //Validate password and pasword2 should match and confirm password should be matched
         //we can simply find the user with the payload email and id finally update with new password
         //Always hash the password before saving
         if (password2 != cpassword) {
