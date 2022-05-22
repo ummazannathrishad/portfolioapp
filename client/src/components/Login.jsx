@@ -71,7 +71,7 @@ const Login = () => {
                                 </div>
                                 <button type="submit" className="btn button-skyblue" >Submit</button>
                                 <p>
-                                Reset Password? <a href="/forgot-password">Click Here</a>
+                                Reset Password? <a href="/forget-password">Click Here</a>
                                 </p>
                                 <p>
                                 Create a new account. <a href="/">Click Here</a>

@@ -6,8 +6,12 @@ const Resetpass = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    
     const onResetPass = async (e) => {
         e.preventDefault();
+        if(password !== confirmPassword) {
+            alert('Password does not match');
+        }
         try{
             const response = await axios.post('/reset-password', JSON.stringify({password, confirmPassword}),
             {
@@ -15,6 +19,7 @@ const Resetpass = () => {
                 withCredentials: true
             }
             );
+            console.log(JSON.stringify(response.data));
         }
         catch(err){
             console.log('Error');
@@ -34,13 +39,13 @@ const Resetpass = () => {
                             </div>
                         </div>
                         <div className="col-md-6 d-flex justify-content-center align-items-center">
-                            <form action="" method="post" className="needs-validation p-4" novalidate onSubmit={onResetPass}>
+                            <form action="/reset-password" method="post" className="needs-validation p-4" novalidate onSubmit={onResetPass}>
                                 <h3 className="mb-4">Reset Password</h3>
                                 <div className="row d-flex justify-content-center">
                                     <div className="col-md-12">
                                         <div className="input-group has-validation">
                                             <span className="input-group-text"><i className="fa-solid fa-key"></i></span>
-                                            <input type="password" className="form-control" name="password" id="password" placeholder="New Password"  required/>
+                                            <input type="password" className="form-control" name="password" id="password" placeholder="New Password" onChange={(e)=> setPassword(e.target.value)} value={password}   required/>
                                             <div className="invalid-feedback">
                                                 Please choose a username.
                                               </div>
@@ -48,11 +53,11 @@ const Resetpass = () => {
 
                                         <div className="input-group has-validation mt-3">
                                             <span className="input-group-text"><i className="fa-solid fa-key"></i></span>
-                                            <input type="text" className="form-control" name="confirmpass" id="password" placeholder="Confirm Password" required/>
+                                            <input type="password" className="form-control" name="confirmpass" id="password" placeholder="Confirm Password" onChange={(e)=> setConfirmPassword(e.target.value)} value={confirmPassword} required/>
                                         </div>
                                     </div>
                                     <div className="col-md-12 text-center">
-                                        <button className="btn button-skyblue mt-3"><i className="fa-solid fa-arrow-rotate-right"></i> Reset Password</button>
+                                        <button type="submit" className="btn button-skyblue mt-3"><i className="fa-solid fa-arrow-rotate-right"></i> Reset Password</button>
                                     </div>
                                 </div>
                             </form>
