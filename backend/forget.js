@@ -43,13 +43,15 @@ app.post('/forget-password', async (req, res, next) => {
 //For reset password
 
 app.post('/reset-password', async (req, res, next) => {
-    const { _id, token } = req.query
-    console.log(_id);
+    const { _id, token } = req.body
+    console.log(_id, token);
     const users = await User.findOne({ _id: _id });
+    console.log(users)
     // console.log(users.password)
     //const { password, password2 } = req.body
     const { password2, cpassword } = req.body
     //res.send(user)
+    console.log(password2, cpassword)
     if (_id != users._id) {
         return (res.end('Invalid id'))
     }
@@ -57,6 +59,7 @@ app.post('/reset-password', async (req, res, next) => {
     const secret = JWT_SECRET + User.password
     try {
         const payload = jwt.verify(token, secret)
+        
         //Validate password and pasword2 should match and confirm password should be matched
         //we can simply find the user with the payload email and id finally update with new password
         //Always hash the password before saving
