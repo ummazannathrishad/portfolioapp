@@ -4,6 +4,8 @@ let mongoose = require('mongoose');
 let bodyParser = require("body-parser");
 // const { json } = require("express/lib/response");
 let User = require('./userInfoSchema')
+const cors = require('cors')
+app.use(cors())
 app.use(bodyParser.json());
 mongoose.connect("mongodb+srv://atul:h6iRSWoWXaOUTPgi@cluster0.yavrk.mongodb.net/practiceOne?retryWrites=true&w=majority")
 app.post('/login', (req, res)=>{

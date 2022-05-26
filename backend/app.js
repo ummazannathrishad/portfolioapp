@@ -6,7 +6,9 @@ let bodyparser = require("body-parser");
 app.use(bodyparser.json());
 
 let User = require('./userInfoSchema')
+const cors = require('cors')
 
+app.use(cors())
 mongoose.connect("mongodb+srv://atul:h6iRSWoWXaOUTPgi@cluster0.yavrk.mongodb.net/practiceOne?retryWrites=true&w=majority")
 
 app.post('/register', (req, res) =>{
