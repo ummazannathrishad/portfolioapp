@@ -20,7 +20,7 @@ const Login = () => {
   const handleSubmit =async (e) => {
     e.preventDefault();
     try{
-      const response = await axios.post('/login', JSON.stringify({email, password}),
+      const response = await axios.post('http://localhost:8080/login', JSON.stringify({email, password}),
       {
         headers: { 'Content-Type': 'application/json'},
         withCredentials: true

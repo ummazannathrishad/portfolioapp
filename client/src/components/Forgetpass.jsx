@@ -10,7 +10,7 @@ const Forgetpass = () => {
   const handleForgetpass =async (e) => {
     e.preventDefault();
     try{
-        const response = await axios.post('/forget-password', JSON.stringify({email}),
+        const response = await axios.post('http://localhost:8080/forget-password', JSON.stringify({email}),
         {
             headers: { 'Content-Type': 'application/json'},
             withCredentials: true

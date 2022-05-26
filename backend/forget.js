@@ -42,6 +42,7 @@ app.post('/forget-password', async (req, res, next) => {
     console.log(link)
     res.end('Password resest link has been send to your email')
 })
+
 //For reset password
 
 app.post('/reset-password', async (req, res, next) => {
