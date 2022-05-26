@@ -2,6 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
+const cors = require('cors')
 const User = require('./userInfoSchema')
 mongoose.connect("mongodb+srv://atul:h6iRSWoWXaOUTPgi@cluster0.yavrk.mongodb.net/practiceOne?retryWrites=true&w=majority", () => {
     console.log("mongodb connected");
@@ -13,6 +14,7 @@ const app = express();
 app.use(bodyparser.json());
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 
 const JWT_SECRET = 'some super secret'
 //For forgot password
