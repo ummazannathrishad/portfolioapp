@@ -9,6 +9,7 @@ const Resetpass = () => {
     const [password2, setPassword] = useState('');
     const [cpassword, setConfirmPassword] = useState('');
     const [id, setId] = useState('');
+    const [success, setSuccess] = useState(false);
     // const [location, setLocation] = useState('');
 
 //     const search = useLocation().search;
@@ -21,6 +22,8 @@ const Resetpass = () => {
             const parsed = querystring.parse(location.search);
             const _id = parsed._id;
             const token = parsed.token;
+            let message = '';
+            let message_class = '';
     const onResetPass = async (e) => {
         e.preventDefault();
         if(password2 !== cpassword) {
@@ -34,18 +37,26 @@ const Resetpass = () => {
             //     }
             // );
             // console.log(get_id.data);
-            const response = await axios.post('/reset-password', JSON.stringify({_id, token, password2, cpassword}),
+            const response = await axios.post('http://localhost:8080/reset-password', JSON.stringify({_id, token, password2, cpassword}),
             {
                 headers: { 'Content-Type': 'application/json'},
                 withCredentials: true
             }
             );
-            console.log(JSON.stringify(response.data));
+             setSuccess(true);
         }
         catch(err){
-            console.log(err);
+            setSuccess(false);
         }
+
     }
+    // if(message == "password updated"){
+    //     // message_class = `
+        
+    //     // `;
+    //     console.log('password updated');
+
+    // }
 
 
   return (
@@ -60,10 +71,23 @@ const Resetpass = () => {
                             </div>
                         </div>
                         <div className="col-md-6 d-flex justify-content-center align-items-center">
-                            <form action="/reset-password" method="post" className="needs-validation p-4" novalidate onSubmit={onResetPass}>
+                            
+                            <form action="/reset-password" method="post" className="needs-validation p-4" noValidate onSubmit={onResetPass}>
                                 <h3 className="mb-4">Reset Password</h3>
+                                { 
+                                success ? 
+                                <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                                Password Not Updated
+                                <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>  : 
+                                <div className="alert alert-success alert-dismissible fade show" role="alert">
+                                Password Updated Successfully
+                                <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div> 
+                                }
                                 <div className="row d-flex justify-content-center">
                                     <div className="col-md-12">
+                                        {message_class}
                                         <div className="input-group has-validation">
                                             <span className="input-group-text"><i className="fa-solid fa-key"></i></span>
                                             <input type="password" className="form-control" name="password" id="password" placeholder="New Password" onChange={(e)=> setPassword(e.target.value)} value={password2}   required/>
