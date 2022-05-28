@@ -3,27 +3,31 @@ import axios from 'axios';
 import signUp_img from '../assets/image/signup-img.png';
 
 const Signup = () => {
-    const [fname, setFname] = useState('');
-    const [lname, setLname] = useState('');
+    const [fName, setfName] = useState('');
+    const [lName, setlName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [cpassword, setCPassword] = useState('');
+    const [cPassword, setCPassword] = useState('');
 
     const handleSubmit =async (e) => {
         e.preventDefault();
         try{
-          const response = await axios.post('http://localhost:8080/register', JSON.stringify({fname, lname, email, password, cpassword}),
+          const response = await axios.post('http://localhost:8080/register', JSON.stringify({fName, lName, email, password, cPassword}),
           {
             headers: { 'Content-Type': 'application/json'},
             withCredentials: true
           }
+          
           );
           
           // console.log(JSON.stringify(response.data));
           // console.log(JSON.stringify(response));
-          // const accessToken = response?.data?.accessToken;
+          // const accessToken = response?.data?.accessToken; 
+          setfName('');
+          setlName('');
           setEmail('');
           setPassword('');
+          setCPassword('');
         }
         catch(err) {
           if(!err?.response?.data?.message) {
@@ -48,12 +52,12 @@ const Signup = () => {
                             <form className="row g-3 needs-validation" noValidate onSubmit={handleSubmit}>
                                 <div className="col-md-6">
                                     <label htmlFor="validationCustom01" className="form-label">First name</label>
-                                    <input type="text" className="form-control" id="validationCustom01" placeholder="Type Name" name="fname" onChange = {(e) => setFname(e.target.value)} value={fname}
+                                    <input type="text" className="form-control" id="validationCustom01" placeholder="Type Name" name="fName" onChange = {(e) => setfName(e.target.value)} value={fName}
                                         required />
                                 </div>
                                 <div className="col-md-6">
                                     <label htmlFor="validationCustom02" className="form-label">Last name</label>
-                                    <input type="text" className="form-control" id="validationCustom02" placeholder="Type Name" name="lname" onChange={(e) =>setLname(e.target.value)} value={lname}
+                                    <input type="text" className="form-control" id="validationCustom02" placeholder="Type Name" name="lName" onChange={(e) =>setlName(e.target.value)} value={lName}
                                         required />
                                 </div>
                                     <div className="form-group">
@@ -71,8 +75,8 @@ const Signup = () => {
 
                                         <br />
 
-                                        <input type="password" className="form-control" id="exampleInputPassword1"
-                                            placeholder="Confirm Password" onChange={(e)=> setCPassword(e.target.value)} value={cpassword} />
+                                        <input type="password" className="form-control" id="exampleInputPassword2"
+                                            placeholder="Confirm Password" onChange={(e)=> setCPassword(e.target.value)} value={cPassword} />
                                     </div>
 
                                     <br />

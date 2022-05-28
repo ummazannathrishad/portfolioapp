@@ -18,6 +18,7 @@ mongoose.connect("mongodb+srv://atul:h6iRSWoWXaOUTPgi@cluster0.yavrk.mongodb.net
 
 app.post('/register', (req, res) =>{
     let JSONData = req.body;
+    // console.log(JSONData);
 
     if(JSONData['password'] != JSONData['cPassword']){
         res.end("Password Doesn't match")
