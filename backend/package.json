@@ -2,9 +2,9 @@
   "name": "registrationform",
   "version": "1.0.0",
   "description": "",
-  "main": "login.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon login.js",
     "dev": "nodemon app.js"
   },
   "keywords": [],
