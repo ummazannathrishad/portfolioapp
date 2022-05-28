@@ -74,7 +74,10 @@ app.post('/reset-password', async (req, res, next) => {
         if (password2 != cpassword) {
             res.send(" confirm password doesn't match");
         } else {
-            users.password = password2
+            const salt = await bcrypt.genSalt(10)
+            const hashPassword = await bcrypt.hash(password2, salt)
+            //users.password2 = hashPassword
+            users.password = hashPassword
             await users.save()
             res.json("password updated")
         }
