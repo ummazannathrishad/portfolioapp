@@ -26,9 +26,7 @@ const Resetpass = () => {
             let message_class = '';
     const onResetPass = async (e) => {
         e.preventDefault();
-        if(password2 !== cpassword) {
-            alert('Password does not match');
-        }
+        
         try{
             // const get_id = await axios.get(`/reset-password`, JSON.stringify({id}),
             //     {
@@ -37,6 +35,9 @@ const Resetpass = () => {
             //     }
             // );
             // console.log(get_id.data);
+            if(password2 !== cpassword) {
+                setSuccess(false);
+            }
             const response = await axios.post('http://localhost:8080/reset-password', JSON.stringify({_id, token, password2, cpassword}),
             {
                 headers: { 'Content-Type': 'application/json'},
@@ -76,12 +77,12 @@ const Resetpass = () => {
                                 <h3 className="mb-4">Reset Password</h3>
                                 { 
                                 success ? 
-                                <div className="alert alert-danger alert-dismissible fade show" role="alert">
-                                Password Not Updated
+                                <div className="alert alert-success alert-dismissible fade show" role="alert">
+                                Password Updated
                                 <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>  : 
-                                <div className="alert alert-success alert-dismissible fade show" role="alert">
-                                Password Updated Successfully
+                                <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                                Password Not Updated
                                 <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div> 
                                 }
