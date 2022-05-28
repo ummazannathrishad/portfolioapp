@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 const express = require("express");
 let app = express();
-
+const bcrypt = require('bcrypt')
 let bodyparser = require("body-parser");
 app.use(bodyparser.json());
 
@@ -16,27 +16,40 @@ app.use(
 )
 mongoose.connect("mongodb+srv://atul:h6iRSWoWXaOUTPgi@cluster0.yavrk.mongodb.net/practiceOne?retryWrites=true&w=majority")
 
-app.post('/register', (req, res) => {
+app.post('/register', (req, res) =>{
     let JSONData = req.body;
 
-    console.log(JSONData);
-
-    let finalUserDetails = new User({
-        fName: JSONData['fName'],
-        lName: JSONData['lName'],
-        email: JSONData['email'],
-        password: JSONData['password'],
-    })
-
-    finalUserDetails.save()
-        .then(result => {
-            res.send(result)
+    if(JSONData['password'] != JSONData['cPassword']){
+        res.end("Password Doesn't match")
+    }else{
+        bcrypt.hash(JSONData['password'], 10, (err, hash) =>{
+            // let securePass = bcrypt.hash(JSONData['password'], 10)
+            if(err){
+                res.end(err)
+            }else{
+                let securePass = hash;
+                let finalUserDetails = new User({
+                    fName : JSONData['fName'],
+                    lName : JSONData['lName'],
+                    email: JSONData['email'],
+                    password : securePass,
+                    // cPassword : JSONData['cPassword'],
+                })
+    
+                finalUserDetails.save()
+                .then(result =>{
+                    res.send(result)
+                })
+                .catch(err =>{
+                    console.log(err)
+                })
+            }
         })
-        .catch(err => {
-            console.log(err)
-        })
+        
+    }
+
 })
 
-app.listen(8080, () => {
+app.listen(8080, ()=>{
     console.log("Listening......")
 })
