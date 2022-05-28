@@ -23,7 +23,6 @@ app.post('/register', (req, res) =>{
         res.end("Password Doesn't match")
     }else{
         bcrypt.hash(JSONData['password'], 10, (err, hash) =>{
-            // let securePass = bcrypt.hash(JSONData['password'], 10)
             if(err){
                 res.end(err)
             }else{
@@ -33,7 +32,6 @@ app.post('/register', (req, res) =>{
                     lName : JSONData['lName'],
                     email: JSONData['email'],
                     password : securePass,
-                    // cPassword : JSONData['cPassword'],
                 })
     
                 finalUserDetails.save()
@@ -45,9 +43,7 @@ app.post('/register', (req, res) =>{
                 })
             }
         })
-        
     }
-
 })
 
 app.listen(8080, ()=>{
