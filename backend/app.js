@@ -8,30 +8,35 @@ app.use(bodyparser.json());
 let User = require('./userInfoSchema')
 const cors = require('cors')
 
-app.use(cors())
+app.use(
+    cors({
+        origin: "http://localhost:3000",
+        credentials: true
+    })
+)
 mongoose.connect("mongodb+srv://atul:h6iRSWoWXaOUTPgi@cluster0.yavrk.mongodb.net/practiceOne?retryWrites=true&w=majority")
 
-app.post('/register', (req, res) =>{
+app.post('/register', (req, res) => {
     let JSONData = req.body;
 
     console.log(JSONData);
 
     let finalUserDetails = new User({
-        fName : JSONData['fName'],
-        lName : JSONData['lName'],
+        fName: JSONData['fName'],
+        lName: JSONData['lName'],
         email: JSONData['email'],
-        password : JSONData['password'],
+        password: JSONData['password'],
     })
 
     finalUserDetails.save()
-    .then(result =>{
-        res.send(result)
-    })
-    .catch(err =>{
-        console.log(err)
-    })
+        .then(result => {
+            res.send(result)
+        })
+        .catch(err => {
+            console.log(err)
+        })
 })
 
-app.listen(8080, ()=>{
+app.listen(8080, () => {
     console.log("Listening......")
 })
